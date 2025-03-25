@@ -1,0 +1,16 @@
+
+server:
+  port: 9090
+spring:
+  application:
+    name: Microservice Clients
+eureka:
+  instance:
+    lease-renewal-interval-in-seconds: 30  # ? Frecuencia de renovación de registro en Eureka
+    lease-expiration-duration-in-seconds: 90  # ? Tiempo de espera antes de eliminar la instancia si no responde
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+    register-with-eureka: true
+    fetch-registry: true
+    registry-fetch-interval-seconds: 10
