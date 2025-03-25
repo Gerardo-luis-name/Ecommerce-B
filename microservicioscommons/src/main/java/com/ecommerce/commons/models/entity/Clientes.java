@@ -9,6 +9,7 @@ import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -37,8 +38,8 @@ public class Clientes {
 	private String email;
 	
 	@Column(name = "TELEFONO")
-	@NotBlank(message = "El correo del cliente es obligatorio")
-	@Max(value = 10, message = "El numero del cliente no debe ser mayor a 10")
+	@NotNull(message = "El correo del cliente es obligatorio")
+	@Max(value = 9999999999L, message = "El numero del cliente no debe ser mayor a 10 digitos")
 	private Long telefono;
 	
 	@Column(name = "DIRECCION")

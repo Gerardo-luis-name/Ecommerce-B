@@ -39,12 +39,12 @@ import jakarta.validation.constraints.Size;
 		@Column(name = "FECHA_CREACION")
 		@NotNull(message = "La fecha de fundacion es obligatoria")
 		@Past(message = "La fecha de la fundacion debe ser anterior a la fecha actual")
-		private LocalDate fechacreacion;
+		private LocalDate fechaCreacion;
 		
 		@Enumerated(EnumType.STRING)
 		@Column(name = "ESTADO")
 		@NotNull(message = "El estado del pedido es obligatoria")
-		private String estadoPedido;
+		private EstadoPedido estadoPedido;
 		
 		@NotNull(message = "El cliente es obligatorio")
 		@JsonIgnoreProperties(value= {"handler", "hibernateLazyInitializer"})
@@ -69,18 +69,18 @@ import jakarta.validation.constraints.Size;
 		}
 
 		public LocalDate getFechacreacion() {
-			return fechacreacion;
+			return fechaCreacion;
 		}
 
 		public void setFechacreacion(LocalDate fechacreacion) {
-			this.fechacreacion = fechacreacion;
+			this.fechaCreacion = fechacreacion;
 		}
 
-		public String getEstadoPedido() {
+		public EstadoPedido getEstadoPedido() {
 			return estadoPedido;
 		}
 
-		public void setEstadoPedido(String estadoPedido) {
+		public void setEstadoPedido(EstadoPedido estadoPedido) {
 			this.estadoPedido = estadoPedido;
 		}
 
@@ -92,4 +92,10 @@ import jakarta.validation.constraints.Size;
 			this.idCliente = idCliente;
 		}
 		
+		public enum EstadoPedido {
+	        PENDIENTE,
+	        ENVIADO,
+	        ENTREGADO,
+	        CANCELADO;
+	    }
 }

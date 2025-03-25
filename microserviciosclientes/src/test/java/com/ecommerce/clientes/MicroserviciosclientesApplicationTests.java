@@ -1,10 +1,10 @@
-package com.microservice.clients;
+package com.ecommerce.clientes;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ClientsApplicationTests {
+class MicroserviciosclientesApplicationTests {
 
 	@Test
 	void contextLoads() {
