@@ -1,4 +1,4 @@
-package com.microservice.commons.models.entity;
+package com.ecommerce.commons.models.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -92,5 +92,7 @@ public class Clientes {
 
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
-	}	
+	}
+	
+	
 }

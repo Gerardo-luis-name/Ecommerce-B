@@ -1,5 +1,4 @@
-package com.microservice.commons.controllers;
-
+package com.ecommerce.commons.controllers;
 
 import java.util.HashMap;
 import java.util.List;
@@ -16,11 +15,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import com.microservice.commons.services.CommonService;
+import com.ecommerce.commons.services.CommonService;
 
 import jakarta.validation.Valid;
 
-public class CommonController <E, S extends CommonService<E>>{
+
+public class CommonController <E, S extends CommonService<E>> {
 	
 	@Autowired
 	protected S service;

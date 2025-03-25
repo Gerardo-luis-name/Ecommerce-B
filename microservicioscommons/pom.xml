@@ -8,11 +8,11 @@
 		<version>3.4.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.microservice</groupId>
+	<groupId>com.ecommerce</groupId>
 	<artifactId>commons</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>microservicios-commons</name>
-	<description>Microservicio de commnos</description>
+	<name>microservicioscommons</name>
+	<description>microservicios clientes</description>
 	<url/>
 	<licenses>
 		<license/>

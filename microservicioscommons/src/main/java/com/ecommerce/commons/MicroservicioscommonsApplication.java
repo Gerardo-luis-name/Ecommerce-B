@@ -1,13 +1,13 @@
-package com.microservice.commons;
+package com.ecommerce.commons;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MicroserviciosCommonsApplication {
+public class MicroservicioscommonsApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MicroserviciosCommonsApplication.class, args);
+		SpringApplication.run(MicroservicioscommonsApplication.class, args);
 	}
 
 }
