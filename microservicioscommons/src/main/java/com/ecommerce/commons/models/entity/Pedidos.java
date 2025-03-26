@@ -48,46 +48,31 @@ import jakarta.validation.constraints.Size;
 		private EstadoPedido estadoPedido;
 		
 		@ManyToOne
+		@JsonBackReference
 	    @JoinColumn(name = "ID_CLIENTE", nullable = false)
 	    private Clientes idCliente;
-		
+	/*
 		@ManyToMany
 	    @JoinTable(
 	        name = "PEDIDOS_PRODUCTOS", 
 	        joinColumns = @JoinColumn(name = "ID_PRODUCTO"), 
 	        inverseJoinColumns = @JoinColumn(name = "ID_PEDIDO")
 	    )
-	    private List<Productos> poductos;
-		
-		
+	    private List<Productos> poductos;*/
+		/*
 		@NotNull(message = "El cliente es obligatorio")
 		@JsonBackReference
 		@ManyToOne(fetch = FetchType.LAZY)
 		@JoinColumn(name = "ID_CLIENTE", referencedColumnName = "ID_CLIENTE")
-		private Clientes idCliente;
+		private Clientes idCliente;*/
 
 		public Long getId() {
 			return id;
 		}
 
-
-
 		public void setId(Long id) {
 			this.id = id;
 		}
-
-
-
-		public Long getTotal() {
-			return total;
-		}
-
-
-
-		public void setTotal(Long total) {
-			this.total = total;
-		}
-
 
 
 		public LocalDate getFechaCreacion() {
@@ -125,7 +110,7 @@ import jakarta.validation.constraints.Size;
 		}
 
 
-
+/*
 		public List<Productos> getPoductos() {
 			return poductos;
 		}
@@ -138,6 +123,16 @@ import jakarta.validation.constraints.Size;
 
 
 
+		public Long getTotal() {
+			return total;
+		}
+
+		public void setTotal(Long total) {
+			this.total = total;
+		}
+		
+		*/
+		
 		public enum EstadoPedido {
 	        PENDIENTE,
 	        ENVIADO,
