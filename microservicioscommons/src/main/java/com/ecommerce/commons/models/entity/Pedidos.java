@@ -13,6 +13,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
@@ -45,6 +46,10 @@ import jakarta.validation.constraints.Size;
 		@NotNull(message = "El estado del pedido es obligatoria")
 		private EstadoPedido estadoPedido;
 		
+		@ManyToOne
+	    @JoinColumn(name = "ID_CLIENTE", nullable = false)
+	    private Clientes idCliente;
+		
 		@ManyToMany
 	    @JoinTable(
 	        name = "PEDIDOS_PRODUCTOS", 
@@ -52,49 +57,78 @@ import jakarta.validation.constraints.Size;
 	        inverseJoinColumns = @JoinColumn(name = "ID_PEDIDO")
 	    )
 	    private List<Productos> poductos;
+		
+		
 
 		public Long getId() {
 			return id;
 		}
 
+
+
 		public void setId(Long id) {
 			this.id = id;
 		}
+
+
 
 		public Long getTotal() {
 			return total;
 		}
 
+
+
 		public void setTotal(Long total) {
 			this.total = total;
 		}
 
-		public EstadoPedido getEstadoPedido() {
-			return estadoPedido;
-		}
 
-		public void setEstadoPedido(EstadoPedido estadoPedido) {
-			this.estadoPedido = estadoPedido;
-		}
-		
-		
+
 		public LocalDate getFechaCreacion() {
 			return fechaCreacion;
 		}
+
+
 
 		public void setFechaCreacion(LocalDate fechaCreacion) {
 			this.fechaCreacion = fechaCreacion;
 		}
 
 
+
+		public EstadoPedido getEstadoPedido() {
+			return estadoPedido;
+		}
+
+
+
+		public void setEstadoPedido(EstadoPedido estadoPedido) {
+			this.estadoPedido = estadoPedido;
+		}
+
+
+
+		public Clientes getIdCliente() {
+			return idCliente;
+		}
+
+
+
+		public void setIdCliente(Clientes idCliente) {
+			this.idCliente = idCliente;
+		}
+
+
+
 		public List<Productos> getPoductos() {
 			return poductos;
 		}
 
+
+
 		public void setPoductos(List<Productos> poductos) {
 			this.poductos = poductos;
 		}
-
 
 
 
