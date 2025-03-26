@@ -2,6 +2,8 @@ package com.microservice.orders.dto;
 
 import java.time.LocalDate;
 
+import com.ecommerce.commons.models.entity.Pedidos.EstadoPedido;
+
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.Min;
@@ -22,7 +24,7 @@ public class PedidosDTO {
 	
 	@NotNull(message = "El estado del pedido es obligatorio")
     @Enumerated(EnumType.STRING)
-	private String estadoPedido;
+	private EstadoPedido estadoPedido;
 	
 	@NotNull(message = "El id del cliente no puede ser nulo")
 	@Min(value = 1, message = "El Id del cliente de puede ser menor que 1")
@@ -52,11 +54,11 @@ public class PedidosDTO {
 		this.fechacreacion = fechacreacion;
 	}
 
-	public String getEstadoPedido() {
+	public EstadoPedido getEstadoPedido() {
 		return estadoPedido;
 	}
 
-	public void setEstadoPedido(String estadoPedido) {
+	public void setEstadoPedido(EstadoPedido estadoPedido) {
 		this.estadoPedido = estadoPedido;
 	}
 
