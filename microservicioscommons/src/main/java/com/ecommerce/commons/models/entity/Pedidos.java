@@ -2,6 +2,7 @@ package com.ecommerce.commons.models.entity;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Column;
@@ -47,7 +48,7 @@ import jakarta.validation.constraints.Size;
 		private EstadoPedido estadoPedido;
 		
 		@NotNull(message = "El cliente es obligatorio")
-		@JsonIgnoreProperties(value= {"handler", "hibernateLazyInitializer"})
+		@JsonBackReference
 		@ManyToOne(fetch = FetchType.LAZY)
 		@JoinColumn(name = "ID_CLIENTE", referencedColumnName = "ID_CLIENTE")
 		private Clientes idCliente;
