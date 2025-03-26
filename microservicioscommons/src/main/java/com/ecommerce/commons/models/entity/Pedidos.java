@@ -1,19 +1,18 @@
 package com.ecommerce.commons.models.entity;
 
 import java.time.LocalDate;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
@@ -46,11 +45,13 @@ import jakarta.validation.constraints.Size;
 		@NotNull(message = "El estado del pedido es obligatoria")
 		private EstadoPedido estadoPedido;
 		
-		@NotNull(message = "El cliente es obligatorio")
-		@JsonIgnoreProperties(value= {"handler", "hibernateLazyInitializer"})
-		@ManyToOne(fetch = FetchType.LAZY)
-		@JoinColumn(name = "ID_CLIENTE", referencedColumnName = "ID_CLIENTE")
-		private Clientes idCliente;
+		@ManyToMany
+	    @JoinTable(
+	        name = "PEDIDOS_PRODUCTOS", 
+	        joinColumns = @JoinColumn(name = "ID_PRODUCTO"), 
+	        inverseJoinColumns = @JoinColumn(name = "ID_PEDIDO")
+	    )
+	    private List<Productos> poductos;
 
 		public Long getId() {
 			return id;
@@ -68,14 +69,6 @@ import jakarta.validation.constraints.Size;
 			this.total = total;
 		}
 
-		public LocalDate getFechacreacion() {
-			return fechaCreacion;
-		}
-
-		public void setFechacreacion(LocalDate fechacreacion) {
-			this.fechaCreacion = fechacreacion;
-		}
-
 		public EstadoPedido getEstadoPedido() {
 			return estadoPedido;
 		}
@@ -83,15 +76,28 @@ import jakarta.validation.constraints.Size;
 		public void setEstadoPedido(EstadoPedido estadoPedido) {
 			this.estadoPedido = estadoPedido;
 		}
-
-		public Clientes getIdCliente() {
-			return idCliente;
-		}
-
-		public void setIdCliente(Clientes idCliente) {
-			this.idCliente = idCliente;
-		}
 		
+		
+		public LocalDate getFechaCreacion() {
+			return fechaCreacion;
+		}
+
+		public void setFechaCreacion(LocalDate fechaCreacion) {
+			this.fechaCreacion = fechaCreacion;
+		}
+
+
+		public List<Productos> getPoductos() {
+			return poductos;
+		}
+
+		public void setPoductos(List<Productos> poductos) {
+			this.poductos = poductos;
+		}
+
+
+
+
 		public enum EstadoPedido {
 	        PENDIENTE,
 	        ENVIADO,
