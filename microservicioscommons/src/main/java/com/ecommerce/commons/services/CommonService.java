@@ -8,4 +8,5 @@ public interface CommonService<E> {
 	Optional <E> obtenerPorId(Long id);
 	E crear (E entity);
 	Optional<E> eliminarPorId(Long id);
+	
 }

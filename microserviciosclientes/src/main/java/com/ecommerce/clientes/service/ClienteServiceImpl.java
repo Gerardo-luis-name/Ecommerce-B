@@ -11,6 +11,8 @@ import com.ecommerce.commons.services.CommonServiceImpl;
 
 
 
+
+
 @Service
 public class ClienteServiceImpl extends CommonServiceImpl<Clientes, ClienteRepository> implements ClienteService{
 	

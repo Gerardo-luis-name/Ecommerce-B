@@ -8,7 +8,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -21,24 +23,25 @@ public class Productos {
 	@Column(name = "ID_PRODUCTO")
 	private Long id;
 	
-	@Column(name = "NOMBRE")
-	@NotBlank(message = "El nombre del producto es obligatorio")
-	@Size(min = 1, max = 50, message = "El nombre del producto debe tener entre 1 a 50 caracteres")
-	private String nombre;
-	
 	@Column(name = "DESCRIPCION")
 	@NotBlank(message = "La descripcion del producto es obligatorio")
 	@Size(min = 1, max = 100, message = "El descripcion del producto debe tener entre 1 a 100 caracteres")
 	private String descripcion;
 	
+	@Column(name = "NOMBRE")
+	@NotBlank(message = "El nombre del producto es obligatorio")
+	@Size(min = 1, max = 50, message = "El nombre del producto debe tener entre 1 a 50 caracteres")
+	private String nombre;
+	
+	
 	@Column(name = "PRECIO")
-	@NotBlank(message = "El precio del producto es obligatorio")
-	@Max(value = 8, message = "El precio del producto no debe ser mayor a 8 numeros")
+	@NotNull(message = "El precio del producto es obligatorio")
+	@Min(value = 0, message = "El stock del producto no debe al menos 0")
 	private Long precio;
 	
 	@Column(name = "STOCK")
-	@NotBlank(message = "El stcok del producto es obligatorio")
-	@Max(value = 8, message = "El stock del producto no debe ser mayor a 8 numeros")
+	@NotNull(message = "El stcok del producto es obligatorio")
+	@Min(value = 0, message = "El stock del producto no debe al menos 0")
 	private Long stock;
 
 	public Long getId() {
