@@ -26,17 +26,10 @@ public class PedidoMapper {
 		pedidosDTO.setTotal(pedidos.getTotal());
 		pedidosDTO.setFechacreacion(pedidos.getFechaCreacion());
 	    pedidosDTO.setEstadoPedido(pedidos.getEstadoPedido());
-	    if (pedidos.getClientes() != null && !pedidos.getClientes().isEmpty()) {
-	        pedidosDTO.setIdCliente(pedidos.getClientes().get(0).getId()); 
-	    } else {
-	        pedidosDTO.setIdCliente(null); 
-	    }
-		
-		return pedidosDTO;
-		
+        pedidosDTO.setIdCliente(pedidos.getIdCliente() != null ? pedidos.getIdCliente().getId() : null);
+	    return pedidosDTO;
 	}
 	
-	@SuppressWarnings("unchecked")
 	public Pedidos dtoToEntity(PedidosDTO pedidosDTO) {
 		
 		if(pedidosDTO == null) {
@@ -48,8 +41,11 @@ public class PedidoMapper {
 		pedido.setTotal(pedidosDTO.getTotal());
 		pedido.setFechaCreacion(pedidosDTO.getFechacreacion());
 		
-		Optional<Clientes> cliente = clientesCliente.getClientesById(pedidosDTO.getIdCliente());
-		pedido.setClientes(cliente.isPresent() ? (List<Clientes>) cliente.get() : null);
+		if (pedidosDTO.getIdCliente() != null) {
+            Clientes cliente = new Clientes();
+            cliente.setId(pedidosDTO.getIdCliente()); // Asignar solo el ID
+            pedido.setIdCliente(cliente); 
+        }
 		return pedido;
 	}
 
