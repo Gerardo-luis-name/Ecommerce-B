@@ -1,6 +1,7 @@
 package com.ecommerce.commons.models.entity;
 
 import java.time.LocalDate;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -49,10 +50,11 @@ import jakarta.validation.constraints.Size;
 		private EstadoPedido estadoPedido;
 		
 		@ManyToOne
+		@JsonBackReference
 		//@JsonBackReference
 	    @JoinColumn(name = "ID_CLIENTE", nullable = false)
 	    private Clientes idCliente;
-		
+	/*
 		@ManyToMany
 	    @JoinTable(
 	        name = "PEDIDOS_PRODUCTOS", 
@@ -65,24 +67,9 @@ import jakarta.validation.constraints.Size;
 			return id;
 		}
 
-
-
 		public void setId(Long id) {
 			this.id = id;
 		}
-
-
-
-		public Long getTotal() {
-			return total;
-		}
-
-
-
-		public void setTotal(Long total) {
-			this.total = total;
-		}
-
 
 
 		public LocalDate getFechaCreacion() {

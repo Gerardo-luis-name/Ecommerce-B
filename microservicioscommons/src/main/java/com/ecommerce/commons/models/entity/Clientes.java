@@ -1,12 +1,19 @@
 package com.ecommerce.commons.models.entity;
 
+
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
@@ -49,6 +56,10 @@ public class Clientes {
 	@NotBlank(message = "La direccion del cliente es obligatorio")
 	@Size(min = 10, max = 100, message = "La direccion del cliente debe tener entre 10 a 100 caracteres")
 	private String direccion;
+	
+	@OneToMany(mappedBy = "idCliente", fetch = FetchType.EAGER)
+	@JsonManagedReference//Correccion ciclo
+    Set<Pedidos> idPedidos;
 	
 	
 	//@OneToMany(mappedBy = "idCliente")
@@ -100,6 +111,16 @@ public class Clientes {
 
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
+	}
+
+	public Set<Pedidos> getIdPedidos() {
+		return idPedidos;
+	}
+
+	public void setIdPedidos(Set<Pedidos> idPedidos) {
+		this.idPedidos = idPedidos;
+	}	
+	
 	}	
 	
 }
