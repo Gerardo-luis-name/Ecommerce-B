@@ -16,7 +16,8 @@ import jakarta.validation.Valid;
 
 @RestController
 public class ProductsController  extends CommonController<Productos, ProductoService > {
-	@PutMapping
+	
+	@PutMapping("/{id}")
 	public ResponseEntity<?> update(@Valid @RequestBody Productos producto,
 			BindingResult result, @PathVariable Long id){
 		if(result.hasErrors()){
