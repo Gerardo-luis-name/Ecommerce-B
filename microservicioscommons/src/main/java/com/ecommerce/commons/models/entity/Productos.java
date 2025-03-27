@@ -1,13 +1,15 @@
 package com.ecommerce.commons.models.entity;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -43,6 +45,9 @@ public class Productos {
 	@NotNull(message = "El stcok del producto es obligatorio")
 	@Min(value = 0, message = "El stock del producto no debe al menos 0")
 	private Long stock;
+	
+	//@ManyToMany(mappedBy = "productos")
+    //private List<Pedidos> pedidos;
 
 	public Long getId() {
 		return id;
