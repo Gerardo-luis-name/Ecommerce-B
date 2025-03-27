@@ -16,8 +16,10 @@ import jakarta.validation.Valid;
 
 
 @RestController
+//@RequestMapping("/api/clientes")
 public class ClienteController extends CommonController<Clientes, ClienteService> {
-	@PutMapping
+	
+	@PutMapping("/{id}")
 	public ResponseEntity<?> update(@Valid @RequestBody Clientes cliente, 
 			BindingResult result, @PathVariable Long id){
 		if(result.hasErrors()) {
