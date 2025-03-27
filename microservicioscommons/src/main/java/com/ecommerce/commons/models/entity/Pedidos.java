@@ -3,6 +3,8 @@ package com.ecommerce.commons.models.entity;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -47,6 +49,7 @@ import jakarta.validation.constraints.Size;
 		private EstadoPedido estadoPedido;
 		
 		@ManyToOne
+		//@JsonBackReference
 	    @JoinColumn(name = "ID_CLIENTE", nullable = false)
 	    private Clientes idCliente;
 		
@@ -56,9 +59,7 @@ import jakarta.validation.constraints.Size;
 	        joinColumns = @JoinColumn(name = "ID_PRODUCTO"), 
 	        inverseJoinColumns = @JoinColumn(name = "ID_PEDIDO")
 	    )
-	    private List<Productos> poductos;
-		
-		
+	    private List<Productos> productos;
 
 		public Long getId() {
 			return id;
@@ -117,18 +118,20 @@ import jakarta.validation.constraints.Size;
 		public void setIdCliente(Clientes idCliente) {
 			this.idCliente = idCliente;
 		}
+		
+		
 
 
-
-		public List<Productos> getPoductos() {
-			return poductos;
+		public List<Productos> getProductos() {
+			return productos;
 		}
 
 
 
-		public void setPoductos(List<Productos> poductos) {
-			this.poductos = poductos;
+		public void setProductos(List<Productos> productos) {
+			this.productos = productos;
 		}
+
 
 
 
