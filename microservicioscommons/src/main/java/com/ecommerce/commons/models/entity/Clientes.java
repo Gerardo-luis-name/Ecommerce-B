@@ -1,10 +1,13 @@
 package com.ecommerce.commons.models.entity;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Max;
@@ -46,6 +49,10 @@ public class Clientes {
 	@NotBlank(message = "La direccion del cliente es obligatorio")
 	@Size(min = 10, max = 100, message = "La direccion del cliente debe tener entre 10 a 100 caracteres")
 	private String direccion;
+	
+	
+	//@OneToMany(mappedBy = "idCliente")
+    //private List<Pedidos> pedidos;
 
 	public Long getId() {
 		return id;
@@ -93,7 +100,6 @@ public class Clientes {
 
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
-	}
-	
+	}	
 	
 }
