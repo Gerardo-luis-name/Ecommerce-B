@@ -14,7 +14,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Max;
@@ -58,7 +57,7 @@ public class Clientes {
 	private String direccion;
 	
 	@OneToMany(mappedBy = "idCliente", fetch = FetchType.EAGER)
-	@JsonManagedReference//Correccion ciclo
+	//@JsonManagedReference//Correccion ciclo
     Set<Pedidos> idPedidos;
 	
 	
@@ -120,7 +119,4 @@ public class Clientes {
 	public void setIdPedidos(Set<Pedidos> idPedidos) {
 		this.idPedidos = idPedidos;
 	}	
-	
-	}	
-	
 }

@@ -51,10 +51,9 @@ import jakarta.validation.constraints.Size;
 		
 		@ManyToOne
 		@JsonBackReference
-		//@JsonBackReference
 	    @JoinColumn(name = "ID_CLIENTE", nullable = false)
 	    private Clientes idCliente;
-	/*
+		
 		@ManyToMany
 	    @JoinTable(
 	        name = "PEDIDOS_PRODUCTOS", 
