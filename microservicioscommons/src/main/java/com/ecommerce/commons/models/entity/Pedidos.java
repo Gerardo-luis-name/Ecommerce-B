@@ -48,16 +48,24 @@ import jakarta.validation.constraints.Size;
 		@NotNull(message = "El estado del pedido es obligatoria")
 		private EstadoPedido estadoPedido;
 		
+	
+		
 		@ManyToOne
-		//@JsonBackReference
+		@JsonBackReference
 	    @JoinColumn(name = "ID_CLIENTE", nullable = false)
-	    private Clientes idCliente;
+	    private Clientes idClientes;
+		
 		
 		@ManyToMany
 	    @JoinTable(
 	        name = "PEDIDOS_PRODUCTOS", 
 	        joinColumns = @JoinColumn(name = "ID_PRODUCTO"), 
 	        inverseJoinColumns = @JoinColumn(name = "ID_PEDIDO")
+	        
+	        
+	    
+	        
+	        
 	    )
 	    private List<Productos> productos;
 
@@ -108,20 +116,6 @@ import jakarta.validation.constraints.Size;
 		}
 
 
-
-		public Clientes getIdCliente() {
-			return idCliente;
-		}
-
-
-
-		public void setIdCliente(Clientes idCliente) {
-			this.idCliente = idCliente;
-		}
-		
-		
-
-
 		public List<Productos> getProductos() {
 			return productos;
 		}
@@ -141,4 +135,17 @@ import jakarta.validation.constraints.Size;
 	        ENTREGADO,
 	        CANCELADO;
 	    }
+
+
+
+
+		public Clientes getIdClientes() {
+			return idClientes;
+		}
+
+
+
+		public void setIdClientes(Clientes idClientes) {
+			this.idClientes = idClientes;
+		}
 }

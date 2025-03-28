@@ -24,7 +24,7 @@ public class PedidoMapper {
 		pedidosDTO.setTotal(pedidos.getTotal());
 		pedidosDTO.setFechacreacion(pedidos.getFechaCreacion());
 	    pedidosDTO.setEstadoPedido(pedidos.getEstadoPedido());
-        pedidosDTO.setIdCliente(pedidos.getIdCliente() != null ? pedidos.getIdCliente().getId() : null);
+        pedidosDTO.setIdCliente(pedidos.getIdClientes() != null ? pedidos.getIdClientes().getId() : null);
 	    return pedidosDTO;
 	}
 	
@@ -42,7 +42,7 @@ public class PedidoMapper {
 		if (pedidosDTO.getIdCliente() != null) {
             Clientes cliente = new Clientes();
             cliente.setId(pedidosDTO.getIdCliente()); // Asignar solo el ID
-            pedido.setIdCliente(cliente); 
+            pedido.setIdClientes(cliente);
         }
 		return pedido;
 	}
